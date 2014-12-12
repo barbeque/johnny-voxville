@@ -3,10 +3,7 @@ vx.step = function(state) {
   // blot out the screen
   state.context.clearRect(0, 0, state.canvas.width, state.canvas.height);
   // draw the voxel world
-  state.context.beginPath();
-  state.context.moveTo(100, 150);
-  state.context.lineTo(450, 50);
-  state.context.stroke();
+  vx.render(state);
   // get input
   // do whatever updates we need
 };
@@ -15,8 +12,10 @@ vx.step = function(state) {
 vx.go = function() {
   state = {};
   state.canvas = document.getElementById('theatre');
+  state.canvas.width = window.innerWidth;
+  state.canvas.height = window.innerHeight;
   state.context = state.canvas.getContext('2d');
-  state.world = vx.generateCubeWorld(100, 100, 100);
+  state.world = vx.generateCubeWorld(25, 25, 25);
   var stepThunk = function(s) {
     return function() { vx.step(s); }
   }(state);
