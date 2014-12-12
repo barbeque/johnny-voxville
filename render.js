@@ -24,7 +24,9 @@ vx.renderSlice = function(state, slice_level) {
   var xOffset = (state.canvas.width - scaled_width) * 0.5;
   var yOffset = (state.canvas.height - scaled_height) * 0.5;
 
-  for(var y = 0; y < slice.length; ++y) { // Y+ -> up, never down!
+  var slice_height = slice.length;
+
+  for(var y = 0; y < slice_height; ++y) { // Y+ -> up, never down!
     for(var x = 0; x < slice[y].length; ++x) {
       var t = slice[y][x];
       if(t > 0) {
