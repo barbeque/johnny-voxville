@@ -16,6 +16,8 @@ vx.go = function() {
   state.canvas.height = window.innerHeight;
   state.context = state.canvas.getContext('2d');
   state.world = vx.generateCubeWorld(100, 100, 100);
+  vx.addSpike(state.world, 6, 6, 30); // add something interesting
+  vx.addSphere(state.world, 6, 30, 6, 10); // add a lollipop.
   var stepThunk = function(s) {
     return function() { vx.step(s); }
   }(state);
