@@ -25,10 +25,11 @@ vx.renderSlice = function(state, slice_level) {
   var yOffset = (state.canvas.height - scaled_height) * 0.5;
 
   var slice_height = slice.length;
+  var max_slice_y = slice_height - 1;
 
   for(var y = 0; y < slice_height; ++y) { // Y+ -> up, never down!
-    for(var x = 0; x < slice[y].length; ++x) {
-      var t = slice[y][x];
+    for(var x = 0; x < slice[max_slice_y - y].length; ++x) {
+      var t = slice[max_slice_y - y][x];
       if(t > 0) {
         ctx.fillStyle = vx.mapCodeToColour(t);
         ctx.fillRect(xOffset + x * pixelsPerCellWidth, yOffset + y * pixelsPerCellHeight,
