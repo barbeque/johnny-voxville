@@ -15,7 +15,7 @@ vx.go = function() {
   state.canvas.width = window.innerWidth;
   state.canvas.height = window.innerHeight;
   state.context = state.canvas.getContext('2d');
-  state.world = vx.generateCubeWorld(100, 100, 100);
+  state.world = vx.generateCubeWorld(50, 50, 50);
   var stepThunk = function(s) {
     return function() { vx.step(s); }
   }(state);
