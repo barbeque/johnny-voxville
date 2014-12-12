@@ -24,7 +24,7 @@ vx.renderSlice = function(state, slice_level) {
   var xOffset = (state.canvas.width - scaled_width) * 0.5;
   var yOffset = (state.canvas.height - scaled_height) * 0.5;
 
-  for(var y = 0; y < slice.length; ++y) {
+  for(var y = 0; y < slice.length; ++y) { // Y+ -> up, never down!
     for(var x = 0; x < slice[y].length; ++x) {
       var t = slice[y][x];
       if(t > 0) {
@@ -37,7 +37,7 @@ vx.renderSlice = function(state, slice_level) {
 }
 
 /// maps one of the 0..9 codes to a colour
-vx.mapCodeToColour = function(code) {
+vx.mapCodeToColour = function(code) { // TODO: tint
   var map = {};
   map[0] = undefined;
   map[1] = 'red';
@@ -45,7 +45,7 @@ vx.mapCodeToColour = function(code) {
   map[3] = 'purple';
   map[4] = 'orange';
   map[5] = 'blue';
-  map[6] = 'white';
+  map[6] = 'yellow';
   map[7] = 'black';
   map[8] = 'teal';
   map[9] = 'crimson';

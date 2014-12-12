@@ -16,9 +16,9 @@ vx.generateCubeWorld = function(width, height, depth) {
   // TODO: seeded random
   var box = vx.makeCubeWorldArray(width, height, depth);
   for(var z = 0; z < depth; ++z) {
-    for(var y = 0; y < height; ++y) {
+    for(var y = 0; y < 10/*height*/; ++y) {
       for(var x = 0; x < width; ++x) {
-        if(Math.random() * 25 > 6) {
+        if(Math.random() * 25 > 18) {
           box[z][y][x] = Math.floor(Math.random() * 10);
         }
         else {
