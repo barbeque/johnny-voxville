@@ -29,3 +29,31 @@ vx.generateCubeWorld = function(width, height, depth) {
   }
   return box;
 };
+
+/// Add a spike to the map for testing purposes.
+vx.addSpike = function(cubeWorldArray, x, z, height) {
+  // Just hardcode the value we're setting, I guess?
+  for(var y = 0; y < height; ++y) {
+    cubeWorldArray[z][y][x] = 1;
+  }
+};
+
+/// Add a sphere to the geometry
+vx.addSphere = function(cubeWorldArray, target_x, target_y, target_z, radius, set_to) {
+  // TODO: wow can this ever be done better
+  var squared_distance = function(x1, y1, z1, x2, y2, z2) {
+    var dx = x2-x1; var dy = y2-y1; var dz = z2 - z1;
+    return dx*dx + dy*dy + dz*dz;
+  };
+  var squared_radius = radius * radius;
+
+  for(var z = 0; z < cubeWorldArray.length; ++z) {
+    for(var y = 0; y < cubeWorldArray[z].length; ++y) {
+      for(var x = 0; x < cubeWorldArray[z][y].length; ++x) {
+        if(squared_distance(target_x, target_y, target_z, x, y, z) < squared_radius) {
+          cubeWorldArray[z][y][x] = set_to;
+        }
+      }
+    }
+  }
+};

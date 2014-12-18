@@ -15,7 +15,14 @@ vx.go = function() {
   state.canvas.width = window.innerWidth;
   state.canvas.height = window.innerHeight;
   state.context = state.canvas.getContext('2d');
-  state.world = vx.generateCubeWorld(50, 50, 50);
+  state.world = vx.generateCubeWorld(100, 100, 100);
+  vx.addSpike(state.world, 6, 6, 30); // add something interesting
+  vx.addSphere(state.world, 6, 30, 6, 10, 1); // add a lollipop.
+  for(var i = 0; i < 10; ++i) {
+    var x = Math.floor(Math.random() * state.world[0][0].length);
+    var z = Math.floor(Math.random() * state.world.length);
+    vx.addSphere(state.world, x, 10, z, 10, 0); // blow a hole in the world.  
+  }
   var stepThunk = function(s) {
     return function() { vx.step(s); }
   }(state);
